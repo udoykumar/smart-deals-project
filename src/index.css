@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+
+  /* DaisyUI theme variables */
+  --color-primary: #632ee3;
+  --color-secondary: #9f62f2;
+}
+
+/* Now override the button style */
+.btn-primary {
+  background-image: linear-gradient(to right, #632ee3, #9f62f2);
+  border: none;
+  color: white;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
