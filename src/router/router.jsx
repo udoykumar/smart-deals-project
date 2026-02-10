@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router";
 import Home from "../components/Home/Home";
 import RootLayout from "../Layout/RootLayout";
-import AllProducts from "../components/AllProducts/AllProducts";
+import AllProducts from "../pages/AllProducts/AllProducts";
 import Register from "../components/Register/Register";
-import MyProducts from "../components/MyProducts/MyProducts";
-import MyBids from "../components/MyBids/MyBids";
+import MyProducts from "../pages/MyProducts/MyProducts";
+import MyBids from "../pages/MyBids/MyBids";
 import Login from "../components/Login/Login";
 import ProductDetails from "../components/ProductDetails/ProductDetails";
 

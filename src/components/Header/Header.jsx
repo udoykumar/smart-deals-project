@@ -70,7 +70,7 @@ const Header = () => {
               Sing out
             </a>
           ) : (
-            <Link to="/register" className="btn">
+            <Link to="/register" className="btn btn-primary">
               Login
             </Link>
           )}

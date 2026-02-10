@@ -21,6 +21,7 @@ const ProductDetails = () => {
     price_max,
     price_min,
   } = useLoaderData();
+  console.log(title);
   const [bids, setBids] = useState([]);
 
   const bidsModalRef = useRef(null);
@@ -43,6 +44,7 @@ const ProductDetails = () => {
     console.log({ productId, name, email, bid });
     const newBid = {
       product: productId,
+      product_image: image,
       buyer_name: name,
       buyer_email: email,
       buyer_image: user?.photoURL,
@@ -103,10 +105,10 @@ const ProductDetails = () => {
                   {[1, 2, 3, 4].map((i) => (
                     <div
                       key={i}
-                      className="bg-gray-200 border-2 rounded-lg mt-4"
+                      className="bg-gray-200 border-2 rounded-lg mt-4 group "
                     >
                       <img
-                        className="bg-cover scale-90 hover:scale-100"
+                        className="bg-cover scale-90 overflow-hidden group-hover:scale-100 duration-300 ease-in-out"
                         src={image}
                         alt=""
                       />
@@ -274,8 +276,10 @@ const ProductDetails = () => {
             <thead>
               <tr>
                 <th>SL NO.</th>
+                <th>Product Image</th>
                 <th>Buyer Name</th>
                 <th>Buyer Email</th>
+                <th>Bid Amount</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -286,13 +290,18 @@ const ProductDetails = () => {
                   <td>
                     <div className="flex items-center gap-3">
                       <div className="avatar">
-                        <div className="mask mask-squircle h-12 w-12">
-                          <img src={bid.image} />
+                        <div className=" h-12 w-12">
+                          <img
+                            src={bid.product_image}
+                            className="object-cover rounded-full"
+                          />
                         </div>
                       </div>
-                      <div>
-                        <div className="font-bold">{bid.buyer_name}</div>
-                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <p className="font-bold">{bid.buyer_name}</p>
                     </div>
                   </td>
                   <td>{bid.buyer_email}</td>
