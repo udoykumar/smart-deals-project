@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Product from "../../components/Product/Product";
+import Loader from "../../components/Loader";
 
 const AllProducts = () => {
   const [data, setData] = useState([]);
@@ -10,16 +11,11 @@ const AllProducts = () => {
       .then((res) => res.json())
       .then((data) => {
         setData(data);
-        console.log(data);
         setLoading(false);
       });
   }, []);
   return loading ? (
-    <div className="w-full h-96 flex items-center justify-center ">
-      <h1 className="text-4xl text-red-500 font-bold animate-ping">
-        Loading <span className="text-green-600 animate-pulse">...</span>
-      </h1>
-    </div>
+    <Loader />
   ) : (
     <div>
       <h1 className="text-3xl font-bold text-center text-gray-500 mt-10">

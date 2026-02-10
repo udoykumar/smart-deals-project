@@ -24,6 +24,9 @@ const Header = () => {
           <li>
             <NavLink to="/myBids">My Bids</NavLink>
           </li>
+          <li>
+            <NavLink to="/create-product">Create Product</NavLink>
+          </li>
         </>
       )}
     </>

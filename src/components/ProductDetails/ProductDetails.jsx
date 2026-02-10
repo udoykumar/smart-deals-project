@@ -1,7 +1,8 @@
 import React, { use, useEffect, useRef, useState } from "react";
-import { Link, useLoaderData } from "react-router";
+import { data, Link, useLoaderData } from "react-router";
 import { AuthContext } from "../../contexts/AuthContexts";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const ProductDetails = () => {
   const {
@@ -28,9 +29,16 @@ const ProductDetails = () => {
   const { user } = use(AuthContext);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/products/bids/${productId}`)
-      .then((res) => res.json())
-      .then((data) => setBids(data));
+    axios
+      .get(`http://localhost:5000/products/bids/${productId}`)
+      .then((data) => {
+        console.log(data.data);
+        setBids(data.data);
+      });
+
+    // fetch(`http://localhost:5000/products/bids/${productId}`)
+    //   .then((res) => res.json())
+    //   .then((data) => setBids(data));
   }, [productId]);
 
   const handleBidModalOpen = () => {
@@ -140,12 +148,9 @@ const ProductDetails = () => {
                       Product Details
                     </h3>
                     <div className="mt-2 space-y-1 text-sm text-gray-600">
-                      {/* <p>
-                        <span className="font-medium">Product ID:</span>{" "}
-                        4613f3b3c7f3c4a36f8bc982b4
-                      </p> */}
                       <p>
-                        <span className="font-medium">Posted:</span> 10/18/2024
+                        <span className="font-medium">Posted:</span>{" "}
+                        {created_at.split("T")[0]}
                       </p>
                     </div>
                   </div>
@@ -176,7 +181,14 @@ const ProductDetails = () => {
                     </h3>
                     <div className="space-y-4">
                       <div className="flex items-center space-x-3">
-                        <div className="bg-gray-300 rounded-full w-12 h-12" />
+                        <div className=" ">
+                          <img
+                            src={seller_image}
+                            alt=""
+                            className="rounded-full w-12 h-12"
+                          />
+                        </div>
+
                         <div>
                           <p className="font-medium text-gray-900">
                             {seller_name}
